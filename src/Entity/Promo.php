@@ -33,6 +33,11 @@ class Promo
         $this->products = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getPourcentage();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
