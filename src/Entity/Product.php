@@ -22,7 +22,7 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 2, scale: 2)]
+    #[ORM\Column(type: Types::FLOAT, precision: 2, scale: 2)]
     private ?string $price = null;
 
     // #[ORM\Column(length: 255)]
@@ -44,7 +44,7 @@ private ?\DateTimeImmutable $updateAt =null;
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Admin $admin = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
