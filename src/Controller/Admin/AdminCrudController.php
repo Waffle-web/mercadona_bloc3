@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Admin;
 use EasyCorp\Bundle\EasyAdminBundle\Config\{Action, Actions, Crud, KeyValueStore};
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -20,7 +20,7 @@ class AdminCrudController extends AbstractCrudController
 
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Admin::class;
     }
 
     public function configureActions(Actions $actions): Actions
@@ -37,7 +37,8 @@ class AdminCrudController extends AbstractCrudController
         $fields = [
             IdField::new('id')->hideOnForm(),
             EmailField::new('email'),
-            ChoiceField::new('roles')
+            ChoiceField::new('roles')->setChoices(['ROLE_ADMIN' => 'ROLE_ADMIN'])
+            ->allowMultipleChoices()
             ->renderExpanded(),
         ];
 
@@ -56,7 +57,6 @@ class AdminCrudController extends AbstractCrudController
 
         return $fields;
     }
-
     public function createNewFormBuilder(EntityDto $entityDto, KeyValueStore $formOptions, AdminContext $context): FormBuilderInterface
     {
         $formBuilder = parent::createNewFormBuilder($entityDto, $formOptions, $context);
@@ -89,4 +89,15 @@ class AdminCrudController extends AbstractCrudController
             $form->getData()->setPassword($hash);
         };
     }
+ 
+    /*
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            IdField::new('id'),
+            TextField::new('title'),
+            TextEditorField::new('description'),
+        ];
+    }
+    */
 }

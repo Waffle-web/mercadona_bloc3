@@ -22,13 +22,13 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::FLOAT, precision: 2, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2)]
     private ?string $price = null;
 
     // #[ORM\Column(length: 255)]
     // private ?string $image = null;
 
-#[Vich\UploadableField(mapping: 'product', fileNameProperty:'imageName', size:'ImageSize')]
+#[Vich\UploadableField(mapping: 'products', fileNameProperty:'imageName', size:'ImageSize')]
 private ?File $imageFile = null;
 
 #[ORM\Column(nullable: true)]
@@ -82,6 +82,12 @@ private ?\DateTimeImmutable $updateAt =null;
 
         return $this;
     }
+
+    // public function __call($name, $arguments)
+    // {
+    //     return $this->getImageName();
+
+    // }
 
     // public function getImage(): ?string
     // {

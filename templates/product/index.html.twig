@@ -3,9 +3,19 @@
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% include 'product/_filter.html.twig' with {form: form} only %}
+            </div>
+            <div class="col-md-9">
+              <div class="grid">
+                 {% for product in products %}
+                      {% include 'product/_card.html.twig' with {product: product} only %}
+                 {% endfor %}
 
-{% for product in products %}
-    <h2>{{ produit.name }}</h2>
-{% endfor %}
-
+                </div>
+            </div>
+      </div>
+    </div>
 {% endblock %}

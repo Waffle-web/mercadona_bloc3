@@ -25,7 +25,7 @@ class ProductCrudController extends AbstractCrudController
     {
 
 $mappingParams = $this->getParameter('vich_uploader.mappings');
-$productsImagePath = $mappingParams['product']['uri_prefix'];
+$productsImagePath = $mappingParams['products']['uri_prefix'];
 
 
         yield TextField::new('name', 'Nom');
