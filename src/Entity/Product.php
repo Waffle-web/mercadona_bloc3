@@ -25,8 +25,7 @@ class Product
     #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2)]
     private ?string $price = null;
 
-    // #[ORM\Column(length: 255)]
-    // private ?string $image = null;
+
 
 #[Vich\UploadableField(mapping: 'products', fileNameProperty:'imageName', size:'ImageSize')]
 private ?File $imageFile = null;
@@ -83,23 +82,6 @@ private ?\DateTimeImmutable $updateAt =null;
         return $this;
     }
 
-    // public function __call($name, $arguments)
-    // {
-    //     return $this->getImageName();
-
-    // }
-
-    // public function getImage(): ?string
-    // {
-    //     return $this->image;
-    // }
-
-    // public function setImage(string $image): static
-    // {
-    //     $this->image = $image;
-
-    //     return $this;
-    // }
 
 /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
