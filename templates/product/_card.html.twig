@@ -5,11 +5,18 @@
                     <h3>{{ product.name }}</h3>     
                     <p class="card-text">Prix : {{product.price | number_format(2, ',', ' ')}} €</p>
                     {% if product.promo == null %}
-                        <p>Aucune promo en cours </p>
+                        <p> </p>
                      {% else %}
-                            <p>patate</p>
+                            <p style="color: red; font-weight: bold">Promo</p>
+                            {# ajout dans la vue du prix après promotion #}
+                            {# <p>Promo Prix: {{ discountedPrice }} EUR</p> #}
                      {% endif %}
-                    <p class="card-text">{{product.description}}</p>           
+                    <p class="card-text">{{product.description}}</p>   
+                    <div>
+                        {% for c in product.category %}
+                            <em class="text-muted text-primary text-italic"># {{ c.name }} </em>
+                        {% endfor %}
+                    </div>        
                 </div>
 
 </div>
